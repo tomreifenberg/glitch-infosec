@@ -29,7 +29,7 @@ const helmet = require("helmet");
 // people off. e.g. `helmet.hidePoweredBy({ setTo: 'PHP 4.2.0' })`
 
 // Use `helmet.hidePoweredBy()``
-
+app.use(helmet.hidePoweredBy({ setTo: 'PHP 4.2.0' }));
 /** 3) Mitigate the risk of clickjacking - `helmet.frameguard()` */
 
 // Your page could be put in a <frame> or <iframe> without your consent.
@@ -42,6 +42,7 @@ const helmet = require("helmet");
 
 // We don't need our app to be framed, so you should use `helmet.frameguard()`
 // passing to it the configuration object `{action: 'deny'}`
+app.use(helmet.frameguard({action: 'deny'}));
 
 /** 4) Mitigate the risk of XSS - `helmet.xssFilter()` */
 
@@ -63,6 +64,7 @@ const helmet = require("helmet");
 // It still has limited support.
 
 // Use `helmet.xssFilter()`
+app.use(helmet.xssFilter());
 
 /** 5) Avoid inferring the response MIME type - `helmet.noSniff()` */
 
@@ -74,6 +76,7 @@ const helmet = require("helmet");
 // instructing the browser to not bypass the provided `Content-Type`.
 
 // Use `helmet.noSniff()`
+app.use(helmet.noSniff());
 
 /** 6) Prevent IE from opening *untrusted* HTML - `helmet.ieNoOpen()` */
 
@@ -85,6 +88,7 @@ const helmet = require("helmet");
 // to prevent IE users from executing downloads in the *trusted* site's context.
 
 // Use `helmet.ieNoOpen()`
+app.use(helmet.ieNoOpen());
 
 /**  7) Ask browsers to access your site via HTTPS only - `helmet.hsts()` */
 
